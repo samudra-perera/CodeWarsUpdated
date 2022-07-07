@@ -393,3 +393,63 @@ function digital_root(n) {
 
 digital_root(942)
 
+/* Definition
+Strong number is the number that the sum of the factorial of its digits is equal to number itself.
+
+For example, 145 is strong, since 1! + 4! + 5! = 1 + 24 + 120 = 145.
+
+Task
+Given a number, Find if it is Strong or not and return either "STRONG!!!!" or "Not Strong !!".
+
+Notes
+Number passed is always Positive.
+Return the result as String
+Input >> Output Examples
+strong_num(1) ==> return "STRONG!!!!"
+Since, the sum of its digits' factorial (1) is equal to number itself, then its a Strong.
+
+strong_num(123) ==> return "Not Strong !!"
+Since the sum of its digits' factorial of 1! + 2! + 3! = 9 is not equal to number itself, then it's Not Strong .
+
+strong_num(2)  ==>  return "STRONG!!!!"
+Since the sum of its digits' factorial of 2! = 2 is equal to number itself, then its a Strong.
+
+strong_num(150) ==> return "Not Strong !!"
+Since the sum of its digits' factorial of 1! + 5! + 0! = 122 is not equal to number itself, Then it's Not Strong .
+*/
+
+function strong(n) {
+  function factorial(num) { // creating the factorial function
+    if(num == 0) {
+      return 1
+    } else if (num > 0) {
+      let fact = 1;
+      for (let i = 1; i <= num; i++) {
+        fact *= i;
+      }
+      return fact
+    }
+  }
+  result = n.toString().split('').map(elem => factorial((Number(elem)))).reduce((acc, curr) => acc + curr, 0)
+
+  return (result == n) ? "STRONG!!!!" : "Not Strong !!"
+}
+
+/*
+Suzuki has a long list of chores required to keep the monastery in good order. Each chore can be completed independently of the others and assigned to any student. Knowing there will always be an even number of chores and that the number of students isn't limited, Suzuki needs to assign two chores to each student in a way which minimizes the total duration of the day's work.
+
+For example, with the list of chores [1, 5, 2, 8, 4, 9, 6, 4, 2, 2, 2, 9], he'll need 6 students whose total workload will be: [7, 8, 8, 10, 10, 11] (as for [5+2, 4+4, 6+2, 8+2, 1+9, 9+2]). In this case, the maximal workload is minimized to 11 (=9+2. Keep in mind two chores must be assigned to each student involved).
+*/
+
+function choreAssignment(chores) {
+  chores.sort((a,b) => a-b) // sorting from the get go for the addition on both sides
+  let counter = chores.length -1 // for incrementing backwards
+  let choreArray = []; // Empty array for pushing in values
+  for(let i = 0; i <= Math.floor(counter); i++) {
+    choreArray[i] = chores[i] + chores[counter]
+    counter = counter - 1;
+  }
+  return choreArray.sort((a,b) => a - b) // sort again for final result
+}
+
+choreAssignment([5, 2, 1, 6, 4, 4])
