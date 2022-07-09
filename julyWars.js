@@ -523,3 +523,61 @@ function adjacentElementsProduct(array) {
 
 adjacentElementsProduct([-23, 4, -5, 99, -27, 329, -2, 7, -921])
 adjacentElementsProduct([9, 5, 10, 2, 24, -1, -48])
+
+
+/* Write a function which reduces fractions to their simplest form! Fractions will be presented as an array/tuple (depending on the language) of strictly positive integers, and the reduced fraction must be returned as an array/tuple:
+
+input:   [numerator, denominator]
+output:  [reduced numerator, reduced denominator]
+example: [45, 120] --> [3, 8]
+All numerators and denominators will be positive integers.
+
+Note: This is an introductory Kata for a series... coming soon! 
+*/
+
+function reduce(fraction) {
+  let result = [];
+  let min = fraction.map(elem => elem).sort((a,b) => a -b)[0]
+  for(let i = 0; i <= min; i++) {
+    if(fraction[0] % i == 0 && fraction[1] % i == 0) {
+      result[0] = fraction[0] / i;
+      result[1] = fraction[1] / i
+    }
+  }
+  return result
+}
+
+reduce([60,20])
+
+/* 
+Make a program that filters a list of strings and returns a list with only your friends name in it.
+
+If a name has exactly 4 letters in it, you can be sure that it has to be a friend of yours! Otherwise, you can be sure he's not...
+
+Ex: Input = ["Ryan", "Kieran", "Jason", "Yous"], Output = ["Ryan", "Yous"]
+
+i.e.
+
+friend ["Ryan", "Kieran", "Mark"] `shouldBe` ["Ryan", "Mark"]
+Note: keep the original order of the names in the output.
+*/ 
+
+function friend(friends){
+  let lenArray = friends.map(elem => elem.split('').length);
+  let realFriends = [];
+  for(let i = 0; i < lenArray.length; i++) {
+    if(lenArray[i] == 4) {
+      realFriends.push(friends[i])
+    }
+  }
+  return realFriends
+}
+
+// Shortest solutinon on Code Wars
+
+function friend(friends){
+  return friends.filter(n => n.length === 4)
+}
+
+// Done for Today
+
