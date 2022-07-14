@@ -800,3 +800,73 @@ function maxGap (numbers){
   }
   return maxValue.sort((a,b) => a-b)[maxValue.length - 1]
 }
+
+/*
+Task
+Given an array/list [] of integers , Find the Nth smallest element in this array of integers
+
+Notes
+Array/list size is at least 3 .
+
+Array/list's numbers could be a mixture of positives , negatives and zeros .
+
+Repetition in array/list's numbers could occur , so don't Remove Duplications .
+
+Input >> Output Examples
+nthSmallest({3,1,2} ,2) ==> return (2) 
+Explanation:
+Since the passed number is 2 , Then * the second smallest element in this array/list is 2*
+
+nthSmallest({15,20,7,10,4,3} ,3) ==> return (7) 
+Explanation:
+Since the passed number is 3 , Then * the third smallest element in this array/list is 7*
+
+nthSmallest({2,169,13,-5,0,-1} ,4) ==> return (2) 
+Explanation:
+Since the passed number is 4 , Then * the fourth smallest element in this array/list is 2*
+
+nthSmallest({177,225,243,-169,-12,-5,2,92} ,5) ==> return (92) 
+Explanation:
+Since the passed number is 5 , Then * the fifth smallest element in this array/list is 92*
+*/
+
+
+function nthSmallest(arr, pos){
+  return arr.sort((a,b) => a-b)[pos - 1]
+}
+
+/*
+Task
+Given an array/list [] of n integers , find maximum triplet sum in the array Without duplications .
+
+Notes :
+Array/list size is at least 3 .
+
+Array/list numbers could be a mixture of positives , negatives and zeros .
+
+Repetition of numbers in the array/list could occur , So (duplications are not included when summing).
+
+Input >> Output Examples
+1- maxTriSum ({3,2,6,8,2,3}) ==> return (17)
+Explanation:
+As the triplet that maximize the sum {6,8,3} in order , their sum is (17)
+
+Note : duplications are not included when summing , (i.e) the numbers added only once .
+
+2- maxTriSum ({2,1,8,0,6,4,8,6,2,4}) ==> return (18)
+Explanation:
+As the triplet that maximize the sum {8, 6, 4} in order , their sum is (18) ,
+
+Note : duplications are not included when summing , (i.e) the numbers added only once .
+
+3- maxTriSum ({-7,12,-7,29,-5,0,-7,0,0,29}) ==> return (41)
+Explanation:
+As the triplet that maximize the sum {12 , 29 , 0} in order , their sum is (41) ,
+
+Note : duplications are not included when summing , (i.e) the numbers added only once .
+*/
+
+function maxTriSum(numbers) {
+  let unique = [...new Set(numbers)]
+  return unique.sort((a,b) => a - b).splice(unique.length - 3, 3).reduce((acc,cur) => acc + cur, 0) 
+}
