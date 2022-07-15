@@ -988,3 +988,61 @@ function rowWeights(array){
 
 rowWeights([29,83,67,53,19,28,96])
 
+/*
+6Kyu
+Write a function that takes in a string of one or more words, and returns the same string, but with all five or more letter words reversed (Just like the name of this Kata). Strings passed in will consist of only letters and spaces. Spaces will be included only when more than one word is present.
+
+Examples: spinWords( "Hey fellow warriors" ) => returns "Hey wollef sroirraw" spinWords( "This is a test") => returns "This is a test" spinWords( "This is another test" )=> returns "This is rehtona test"
+
+*/
+
+function spinWords(string){
+  return string.split(' ').map(elem => {
+    if(elem.length >= 5){
+      return elem.split('').reverse().join('')
+    } else {
+      return elem
+    }
+  }).join(' ')
+}
+
+
+spinWords("Hey fellow warriors")
+
+//Refactor Code 
+function spinWords(string) {
+  return string.split(' ').map(elem => (elem.length >= 5) ? elem.split('').reverse().join('') : elem).join(' ')
+}
+
+/*
+Given an array of integers, find the one that appears an odd number of times.
+
+There will always be only one integer that appears an odd number of times.
+
+Examples
+[7] should return 7, because it occurs 1 time (which is odd).
+[0] should return 0, because it occurs 1 time (which is odd).
+[1,1,2] should return 2, because it occurs 1 time (which is odd).
+[0,1,0,1,0] should return 0, because it occurs 3 times (which is odd).
+[1,2,2,3,3,3,4,3,3,3,2,2,1] should return 4, because it appears 1 time (which is odd).
+*/
+
+function findOdd(A) {
+  let unique = {};
+
+  // Creates a unique set of numbers with the key being the number and obj[key] being the # of instances
+  for (let nums of A) {
+    unique[nums] = unique[nums] ? unique[nums] + 1 : 1;
+  }
+
+  // Iterates object to find number with odd instances and returns the key
+  let sortable = [];
+  for(let key in unique) {
+    if(unique[key] % 2 == 1) {
+      return Number(key)
+    }
+  }
+}
+
+//findOdd([20,1,-1,2,-2,3,3,5,5,1,2,4,20,4,-1,-2,5])
+findOdd([1,1,1,1,1,1,10,1,1,1,1])
