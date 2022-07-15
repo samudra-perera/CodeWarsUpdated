@@ -987,3 +987,4 @@ function rowWeights(array){
 }
 
 rowWeights([29,83,67,53,19,28,96])
+
