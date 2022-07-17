@@ -1046,3 +1046,53 @@ function findOdd(A) {
 
 //findOdd([20,1,-1,2,-2,3,3,5,5,1,2,4,20,4,-1,-2,5])
 findOdd([1,1,1,1,1,1,10,1,1,1,1])
+
+/*
+Your goal in this kata is to implement a difference function, which subtracts one list from another and returns the result.
+
+It should remove all values from list a, which are present in list b keeping their order.
+
+arrayDiff([1,2],[1]) == [2]
+If a value is present in b, all of its occurrences must be removed from the other:
+
+arrayDiff([1,2,2,2,3],[2]) == [1,3]
+*/
+
+function arrayDiff(a, b) {
+  return a.filter(elem => !b.includes(elem))
+
+  }
+
+
+arrayDiff([3,2,2,4,5,6], [3,2])
+
+/* 
+You probably know the "like" system from Facebook and other pages. People can "like" blog posts, pictures or other items. We want to create the text that should be displayed next to such an item.
+
+Implement the function which takes an array containing the names of people that like an item. It must return the display text as shown in the examples:
+
+[]                                -->  "no one likes this"
+["Peter"]                         -->  "Peter likes this"
+["Jacob", "Alex"]                 -->  "Jacob and Alex like this"
+["Max", "John", "Mark"]           -->  "Max, John and Mark like this"
+["Alex", "Jacob", "Mark", "Max"]  -->  "Alex, Jacob and 2 others like this"
+*/
+
+function likes(name) {
+  let len = name.length;
+  if(len == 0) {
+    return 'no one likes this'
+  } else if (len == 1 ) {
+    return `${name[0]} likes this`
+  } else if (len == 2) {
+    return `${name[0]} and ${name[1]} like this`
+  } else if (len == 3) {
+    return `${name[0]}, ${name[1]} and ${name[2]} like this`
+  } else {
+    return `${name[0]}, ${name[1]} and ${len - 2} others like this`
+  }
+}
+
+var countBits = function(n) {
+  return Number(n.toString(2))
+};
