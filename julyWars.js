@@ -1093,6 +1093,57 @@ function likes(name) {
   }
 }
 
+
+
+/*
+Write a function that takes an integer as input, and returns the number of bits that are equal to one in the binary representation of that number. You can guarantee that input is non-negative.
+
+Example: The binary representation of 1234 is 10011010010, so the function should return 5 in this case
+
+*/
+
+
+
 var countBits = function(n) {
-  return Number(n.toString(2))
+  return [...n.toString(2)].reduce((acc,cur) => Number(acc) + Number(cur), 0)
 };
+
+countBits(1234)
+
+/*
+This is the first part. You can solve the second part here when you are done with this. Multiply two numbers! Simple!
+
+The arguments are passed as strings.
+The numbers may be way very large
+Answer should be returned as a string
+The returned "number" should not start with zeros e.g. 0123 is invalid
+Note: 100 randomly generated tests!
+*/
+
+function multiply(a, b) {
+  let result = Number(a) * Number(b)
+  return BigInt(result.toString())
+}
+
+multiply("9007199254740991", "9007199254740991")
+
+/* Move the first letter of each word to the end of it, then add "ay" to the end of the word. Leave punctuation marks untouched.
+
+Examples
+pigIt('Pig latin is cool'); // igPay atinlay siay oolcay
+pigIt('Hello world !');     // elloHay orldway !
+*/
+
+function pigIt(str){
+  let newArray = str.split(' ').map((elem) => elem.split(''))
+  for(let i = 0; i < newArray.length; i++) {
+    if(newArray[i] == '!' || newArray[i] == '?') {
+      break
+    }
+    newArray[i].push(newArray[i].shift())
+    newArray[i].push('a', 'y')
+  }
+  return newArray.map(elem => elem.join('')).join(' ')
+}
+
+pigIt('Pig latin is cool')
