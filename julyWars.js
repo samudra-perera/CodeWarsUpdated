@@ -1177,20 +1177,33 @@ function twinPrime(n) {
 twinPrime(100)
 
 function twinPrime(n) {
-  let array = [...Array(n+1).keys()];
-  let upperLimit = Math.sqrt(n);
+  if(n < 8 && n >= 4) {
+    return 1
+  } else if (n < 4) {
+    return 0
+  }
+
+  let array = [...Array(n+2).keys()];
+  let upperLimit = Math.sqrt(n+3);
+  let twin = [];
 
 
-  // returns an array of primes = numbers and non=primes = false
+  // returns an array of primes equal to numbers and non=primes equal to false
   for(let i = 2; i <= upperLimit; i++) {
     if(array[i]) {
-      for(let j = i * i; j < n; j += i) {
-        console.log(j)
+      for(let j = i * i; j < n+3; j += i) {
         array[j] = false;
       }
     }
   }
-  return array
+  
+  // Checks if number is a twin prime
+  for(let i = 3; i <= n-1; i++) {
+    if(typeof(array[i]) == 'number' && typeof(array[i+2]) == 'number') {
+      twin.push([array[i], array[i+2]])
+    } else {
+      continue
+    }
+  }
+  return twin.length
 }
-
-twinPrime(100)
