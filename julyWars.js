@@ -1360,3 +1360,64 @@ function duplicateEncode(word){
 }
 
 duplicateEncode("recede")
+
+/* Write a function, which takes a non-negative integer (seconds) as input and returns the time in a human-readable format (HH:MM:SS)
+
+HH = hours, padded to 2 digits, range: 00 - 99
+MM = minutes, padded to 2 digits, range: 00 - 59
+SS = seconds, padded to 2 digits, range: 00 - 59
+The maximum time never exceeds 359999 (99:59:59)
+
+You can find some examples in the test fixtures.
+*/
+
+function humanReadable (seconds) {
+  let clock = [`00`, `00`, `00`]
+  let hours = seconds/3600
+  let minutes = (hours - Math.floor(hours))*60
+  let sec = Math.round((minutes - Math.floor(minutes))*60)
+
+  if(hours < 10) {
+    clock[0] = `0${Math.floor(hours)}:`
+  } else {
+    clock[0] = `${Math.floor(hours)}:`
+  }
+
+  if(minutes < 10) {
+    clock[1] = `0${Math.floor(minutes)}:`
+  } else {
+    clock[1] = `${Math.floor(minutes)}:`
+  }
+
+  if(sec < 10) {
+    clock[2] = `0${(sec)}`
+  } else {
+    clock[2] = `${(sec)}`
+  }
+
+  return clock.join('')
+}
+
+humanReadable(207670)
+
+// Refactored with for loop to deal with the if else statements
+
+function humanReadable (seconds) {
+  let clock = ['00','00','00']
+  let hours = seconds/3600
+  let minutes = (hours - Math.floor(hours))*60
+  let sec = Math.round((minutes - Math.floor(minutes))*60)
+  let time = [Math.floor(hours), Math.floor(minutes), sec]
+
+  for(let i = 0; i < clock.length; i++) {
+    if(time[i] < 10) {
+      clock[i] = `0${time[i]}`
+    } else {
+      clock[i] = `${time[i]}`
+    }
+  }
+
+  return `${clock[0]}:${clock[1]}:${clock[2]}`
+}
+
+humanReadable(207670)
