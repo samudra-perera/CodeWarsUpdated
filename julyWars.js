@@ -1323,3 +1323,40 @@ function findOutlier(integers){
   return even.length == 1 ? even[0] : odd[0];
 
 }
+
+/* The goal of this exercise is to convert a string to a new string where each character in the new string is "(" if that character appears only once in the original string, or ")" if that character appears more than once in the original string. Ignore capitalization when determining if a character is a duplicate.
+
+Examples
+"din"      =>  "((("
+"recede"   =>  "()()()"
+"Success"  =>  ")())())"
+"(( @"     =>  "))((" 
+Notes
+Assertion messages may be unclear about what they display in some languages. If you read "...It Should encode XXX", the "XXX" is the expected result, not the input!
+*/
+
+function duplicateEncode(word){
+  let newArr = word.toLowerCase()
+  let objChar = {};
+
+  //Create a set of all the letters and the amount of times they appear in the string
+  for (let i = 0; i < newArr.length; i++) {
+    let char = newArr.charAt(i)
+    if(objChar[char]) {
+      objChar[char]++
+    } else {
+      objChar[char] = 1;
+    }
+  }
+  
+  // turn string into an array then map the the comparison of the # of appearances to the correct parantheses using a conditional
+  return newArr.split('').map(elem => {
+    if(objChar[elem] > 1) {
+      return elem = ')'
+    } else {
+      return elem ='('
+    }
+  }).join('')
+}
+
+duplicateEncode("recede")
