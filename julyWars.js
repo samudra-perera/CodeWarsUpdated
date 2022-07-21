@@ -1492,3 +1492,53 @@ function isValidWalk(walk) {
 
 isValidWalk(['n','s','n','s','n','s','n','s','n','s'])
 
+/* 
+Complete the method/function so that it converts dash/underscore delimited words into camel casing. The first word within the output should be capitalized only if the original word was capitalized (known as Upper Camel Case, also often referred to as Pascal case).
+
+Examples
+"the-stealth-warrior" gets converted to "theStealthWarrior"
+"The_Stealth_Warrior" gets converted to "TheStealthWarrior"
+*/
+
+// Can't use map from the second index unless the array is sliced from the initial map point
+function toCamelCase(str){
+
+  let toCamel
+
+  if(str.split('-').length == 1) {
+    toCamel = str.split('_')
+  } else {
+    toCamel = str.split('-')
+  }
+
+  return toCamel.slice(1).map((elem) => elem.charAt(0).toUpperCase() + elem.slice(1)).shift(toCamel[0])
+}
+
+toCamelCase("The-Stealth-Warrior")
+toCamelCase("the_stealth_warrior")
+
+
+//Done using a for loop
+function toCamelCase(str){
+
+  let toCamel
+
+  if(str.split('-').length == 1) {
+    toCamel = str.split('_')
+  } else {
+    toCamel = str.split('-')
+  }
+
+  //to deal with the edge case where the string starts with a underscore or dash
+  toCamel = toCamel.filter(elem => elem.length > 0)
+
+  for(let i = 1; i < toCamel.length; i++) {
+    toCamel[i] = toCamel[i].charAt(0).toUpperCase() + toCamel[i].slice(1)
+  }
+
+  return toCamel.join('')
+}
+
+toCamelCase("The-Stealth-Warrior")
+toCamelCase("the_stealth_warrior")
+toCamelCase('---to-my-oooooold-----friend')
