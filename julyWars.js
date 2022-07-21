@@ -1542,3 +1542,36 @@ function toCamelCase(str){
 toCamelCase("The-Stealth-Warrior")
 toCamelCase("the_stealth_warrior")
 toCamelCase('---to-my-oooooold-----friend')
+
+/* 
+Write an algorithm that takes an array and moves all of the zeros to the end, preserving the order of the other elements.
+
+moveZeros([false,1,0,1,2,0,1,3,"a"]) // returns[false,1,1,2,1,3,"a",0,0]
+*/
+
+
+function moveZeros(arr) {
+  let countZero = 0;
+  for (let i = 0; i < arr.length; i++) {
+    if(typeof(arr[i]) == 'number' && arr[i] == 0) {
+      countZero++
+    }
+  }
+
+  let newArr = arr.filter(elem => (typeof(elem) == 'string' || elem != 0 || typeof(elem) == 'boolean' || typeof(elem) == 'object'))
+
+
+  return newArr.concat(Array(countZero).fill(0))
+}
+
+
+
+function moveZeros(arr) {
+  let zeroArr = arr.filter(elem => elem === 0)
+  let newArr = arr.filter(elem => elem !== 0)
+
+
+  return newArr.concat(zeroArr)
+}
+
+moveZeros([ '4', '0', 5, [], null, 1, {}, {}, {}, '1', '2', 9 ])
