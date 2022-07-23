@@ -1634,3 +1634,27 @@ function dirReduc(arr) {
 }
 
 dirReduc(["EAST","WEST"])
+
+/* Implement the function unique_in_order which takes as argument a sequence and returns a list of items without any elements with the same value next to each other and preserving the original order of elements.
+
+For example:
+
+uniqueInOrder('AAAABBBCCDAABBB') == ['A', 'B', 'C', 'D', 'A', 'B']
+uniqueInOrder('ABBCcAD')         == ['A', 'B', 'C', 'c', 'A', 'D']
+uniqueInOrder([1,2,2,3,3])       == [1,2,3]
+*/
+
+var uniqueInOrder = function(iterable){
+  //Turns input of string or array into arrays
+  iterable = [...iterable]
+  // to Store unique inputs from array
+  let uniqArr = [];
+
+  //iterate through the array to look for unique inputs and keep order
+  for(let i = 0; i < iterable.length; i++) {
+    if(iterable[i] !== iterable[i+1]) {
+      uniqArr.push(iterable[i])
+    } 
+  }
+  return uniqArr
+}
