@@ -1,3 +1,5 @@
+// 5KYU
+
 /* 
 Watch youtube video before doing this https://www.youtube.com/watch?v=cQm__9qnXIw
 
@@ -35,7 +37,10 @@ Since these languages don't have native arbitrarily large integers, your argumen
 */
 
 var lastDigit = function(str1, str2){  
+  //returns the base last character of the string
   let base = Number(str1.split('').pop());
+  
+  //returns the last two charaters of the string
   let power = Number(str2.slice(-2)) % 4;
 
   // if the power is = 0, then the lastdigit is always one
@@ -54,8 +59,24 @@ var lastDigit = function(str1, str2){
     power = 4
   }
 
-  //Simply return 
+  //Simply return last character of this string as a Num
   return Number((base ** power).toString().split('').pop())
 }
 
-lastDigit("3715290469715693021198967285016729344580685479654510946723", "68819615221552997273737174557165657483427362207517952651")
+// 6KYU
+
+/* 
+A pangram is a sentence that contains every single letter of the alphabet at least once. For example, the sentence "The quick brown fox jumps over the lazy dog" is a pangram, because it uses the letters A-Z at least once (case is irrelevant).
+
+Given a string, detect whether or not it is a pangram. Return True if it is, False if not. Ignore numbers and punctuation.
+*/
+
+function isPangram(string){
+  // creates array of alphabet
+  let alphabet = 'abcdefghijklmnopqrstuvwxyz'.split('')
+
+  //.every() checks every alphabet letter against every lettter of the string, if all 26 cases come back true it returns true else false
+  return alphabet.every(elem => string.toLowerCase().includes(elem))
+}
+
+isPangram("The quick brown fox jumps over the lazy dog.")
