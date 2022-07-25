@@ -1,8 +1,6 @@
 /* 
 Watch youtube video before doing this https://www.youtube.com/watch?v=cQm__9qnXIw
 
-https://www.codewars.com/kata/5511b2f550906349a70004e1/train/haskell
-
 Define a function that takes in two non-negative integers aaa and bbb and returns the last decimal digit of aba^ba 
 b
  . Note that aaa and bbb may be very large!
@@ -35,3 +33,29 @@ JavaScript, C++, R, PureScript, COBOL
 Since these languages don't have native arbitrarily large integers, your arguments are going to be strings representing non-negative integers instead.
 
 */
+
+var lastDigit = function(str1, str2){  
+  let base = Number(str1.split('').pop());
+  let power = Number(str2.slice(-2)) % 4;
+
+  // if the power is = 0, then the lastdigit is always one
+  if(str2 == 0) {
+    return 1;
+   
+  }
+
+  // Base of 0,1,5, and 6 always returns the base as the last digit
+  if (base == 0 || base == 1 || base == 5 || base == 6) {
+    return base
+  }
+
+  //if after the modulo operator the power is 0, take power to = 0
+  if(power == 0) {
+    power = 4
+  }
+
+  //Simply return 
+  return Number((base ** power).toString().split('').pop())
+}
+
+lastDigit("3715290469715693021198967285016729344580685479654510946723", "68819615221552997273737174557165657483427362207517952651")
