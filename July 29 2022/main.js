@@ -7,19 +7,23 @@ Examples
 */
 
 function sortArray(array) {
-    let odd = array.filter(elem => !(elem % 2 == 0)).sort((a,b) => a - b)
+    //removes all odd elements and sorts inplace
+    const odd = array.filter(elem => !(elem % 2 == 0)).sort((a,b) => a - b)
+    //counter to iterate through the odd elements when it comes time to replace in array
     let counter = 0
     for(let i = 0; i < array.length; i++) {
-        if(array[i] % 2 == 0) {
-            continue
-        } else {
+        if(array[i] % 2 != 0) {
             array[i] = odd[counter]
             counter++
-        }
+        } 
     }
     return array
   }
 
   sortArray([9, 8, 7, 6, 5, 4, 3, 2, 1, 0])
 
-  
+  //completed without using a for loop
+  function sortArray(array) {
+    const odd = array.filter((x) => x % 2).sort((a,b) => a - b);
+    return array.map((x) => x % 2 ? odd.shift() : x);
+  }
