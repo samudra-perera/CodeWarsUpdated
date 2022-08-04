@@ -111,3 +111,22 @@ function XO(str) {
     return str.filter(elem => elem === 'x').length == str.filter(elem => elem === 'o').length
 }
 
+/* 
+This time no story, no theory. The examples below show you how to write function accum:
+
+Examples:
+accum("abcd") -> "A-Bb-Ccc-Dddd"
+accum("RqaEzty") -> "R-Qq-Aaa-Eeee-Zzzzz-Tttttt-Yyyyyyy"
+accum("cwAt") -> "C-Ww-Aaa-Tttt"
+The parameter of accum is a string which includes only letters from a..z and A..Z.
+*/
+
+function accum(s) {
+	s = s.toLowerCase().split('')
+    //to store string values 
+    let store = []
+    for(let i = 0; i < s.length; i++) {
+        store[i] = s[i].toUpperCase() + s[i].repeat(i)
+    }
+    return store.join('-')
+}
