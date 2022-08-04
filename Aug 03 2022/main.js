@@ -81,3 +81,33 @@ var summation = function (num) {
     return [...Array(num + 1).keys()].reduce((acc,cur) => acc + cur, 0)
 }
 
+/* Check to see if a string has the same amount of 'x's and 'o's. The method must return a boolean and be case insensitive. The string can contain any char.
+
+Examples input/output:
+
+XO("ooxx") => true
+XO("xooxx") => false
+XO("ooxXm") => true
+XO("zpzpzpp") => true // when no 'x' and 'o' is present should return true
+XO("zzoo") => false
+*/
+
+function XO(str) {
+    let [x, o] = [0, 0]; 
+    str = str.toLowerCase().split('')
+    for(let i = 0; i < str.length; i++) {
+        if(str[i] == 'x') {
+            x++
+        } else if (str[i] == 'o') {
+            o++
+        }
+    }
+    return x == o
+}
+
+// Done with filter
+function XO(str) {
+    str = str.toLowerCase().split('')
+    return str.filter(elem => elem === 'x').length == str.filter(elem => elem === 'o').length
+}
+
