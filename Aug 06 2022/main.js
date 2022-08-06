@@ -91,3 +91,18 @@ function sumDigPow(a, b) {
     return results
   }
   
+  /* The drawing shows 6 squares the sides of which have a length of 1, 1, 2, 3, 5, 8. It's easy to see that the sum of the perimeters of these squares is : 4 * (1 + 1 + 2 + 3 + 5 + 8) = 4 * 20 = 80 
+
+Could you give the sum of the perimeters of all the squares in a rectangle when there are n + 1 squares disposed in the same manner as in the drawing: */
+
+function perimeter(n) {
+    let fib = [0,1]
+    //Creating the Fib sequence based on the number of iterations needed (n)
+    while(n > 0) {
+        fib.push(fib[fib.length - 2] + fib[fib.length - 1])
+        n--
+    }
+    return (fib.reduce((acc,cur) => acc + cur, 0)) * 4
+}
+
+perimeter(5)
