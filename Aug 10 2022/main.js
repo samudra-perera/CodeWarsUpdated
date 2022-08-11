@@ -68,21 +68,21 @@ function isSolved(board) {
     let [r31, r32, r33] = [board[2][0], board[2][1], board[2][2]]
 
     // Check 3 rows, 3 verticals, and 2 diagnols
-    if((r11 == r12 && r12 == r13) && r11 > 0 && r12 > 0 && r13 > 0) {
+    if((r11 == r12 && r12 == r13) && (r11 && r12 && r13) > 0) {
         return r11
-    } else if((r21 == r22 && r22 == r23) && (r21 > 0 && r22 > 0 && r23 > 0)) {
+    } else if((r21 == r22 && r22 == r23) && (r21 && r22  && r23) > 0) {
         return r21
-    } else if((r31 == r32 && r32 == r33) && (r31 > 0 && r32 > 0 && r33 > 0)) {
+    } else if((r31 == r32 && r32 == r33) && (r31 && r32  && r33) > 0) {
         return r31
-    } else if(r11 == r21 && r21 == r31 && r11 > 0 && r21 > 0 && r31 > 0) {
+    } else if(r11 == r21 && r21 == r31 && (r11 && r21 && r31) > 0) {
         return r11
-    } else if(r12 == r22 && r22 == r32 && r12 > 0 && r22 > 0 && r32 > 0) {
+    } else if(r12 == r22 && r22 == r32 && (r12 && r22 && r32) > 0) {
         return r12
-    } else if(r13 == r23 && r23 == r33 && r13 > 0 && r23 > 0 && r33 > 0) {
+    } else if(r13 == r23 && r23 == r33 && (r13 && r23 && r33) > 0) {
         return r13
-    } else if(r11 == r22 && r22 == r33 && r11 > 0 && r22 > 0 && r33 > 0) {
+    } else if(r11 == r22 && r22 == r33 && (r11 && r22 && r33) > 0) {
         return r11
-    } else if(r13 == r22 && r22 == r31 && r13 > 0 && r22 > 0 && r31 > 0) {
+    } else if(r13 == r22 && r22 == r31 && (r13 && r22 && r31) > 0) {
         return r13
     }
 
@@ -95,4 +95,40 @@ function isSolved(board) {
     }
     // If board is full and there is no winner this is the remaining solution
     return 0
+}
+
+/* Write a function that takes a string of parentheses, and determines if the order of the parentheses is valid. The function should return true if the string is valid, and false if it's invalid.
+
+Examples
+"()"              =>  true
+")(()))"          =>  false
+"("               =>  false
+"(())((()())())"  =>  true
+Constraints
+0 <= input.length <= 100
+*/
+
+/* Old answer ... works for 113 test failed 6 test 
+
+function validParentheses(parens) {
+  let parenVals = {
+    '(': 1,
+    ')': -1,
+  }
+
+  return parens.split('').map(elem => elem = parenVals[elem]).reduce((c,a) => c + a, 0) == 0
+}
+*/
+
+
+function validParentheses(parens) {
+    let total = 0;
+    parens = parens.split('')
+    for(let i = 0; i < parens.length; i++) {
+        if(parens[i] == '(') total++
+        if(parens[i] == ')') total--
+        // Total can never be below zero is starting with a '(' type bracket...therefore if total -- -1 that means one bracket is not closing
+        if(total < 0) return false
+    }
+    return total == 0
 }
