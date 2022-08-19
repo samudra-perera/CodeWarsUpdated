@@ -101,3 +101,7 @@ For Python: return True or False
 For JavaScript: return true or false
 */
 
+function isPythagoreanTriple(integers) {
+    integers = integers.sort((a,b) => a-b)
+    return integers[2] == Math.sqrt(integers[0]**2 + integers[1]**2)
+  }
