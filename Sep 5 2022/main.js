@@ -14,5 +14,22 @@ Calculate the sum of the numbers in the nth row of this triangle (starting at in
 */
 
 function rowSumOddNumbers(n) {
-	// TODO
+	let counter = 2
+    let startingValue = 1;
+    let sum = 0;
+    for(let i = 1; i < n; i++) {
+        startingValue += counter;
+        counter+=2
+    }
+
+    for(let j = 0; j < n; j++) {
+        sum += startingValue;
+        startingValue+=2
+    }
+    return sum
 }
+
+// The math way to do it 
+function rowSumOddNumbers(n) {
+    return Math.pow(n, 3);
+  }
