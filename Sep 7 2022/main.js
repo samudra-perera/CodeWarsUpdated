@@ -43,16 +43,14 @@ More details about factorial can be found here. */
 
 function factorial(n) {
   if (n < 0 || n > 12) {
-    throw new RangeError
+    throw new RangeError //For JS cannot handle large Int values
   }
   let total = 1;
-  for (let i = 1; i <= n; i++) {
+  for (let i = 1; i <= n; i++) { //Factorial calculation, can be done with a while loop aswell
     total*=i
   }
   return total
 }
-
-factorial(5)
 
 /*
 Define a function that takes an integer argument and returns a logical value true or false depending on if the integer is a prime.
@@ -70,8 +68,37 @@ is_prime(-1)  false
 */
 
 const isPrime = num => {
-    for(let i = 2; i <= Math.sqrt(num); i++) { // Checking all numbers from 2 to the sqrt of N 
+    for(let i = 2; i <= Math.sqrt(num); i++) { // Checking all numbers from 2 to the sqrt of N since N^2 will include itself as a factor
         if(num % i === 0) return false; 
     }
     return num >= 1;
 }
+
+/* Given two arrays of strings a1 and a2 return a sorted array r in lexicographical order of the strings of a1 which are substrings of strings of a2.
+
+Example 1:
+a1 = ["arp", "live", "strong"]
+
+a2 = ["lively", "alive", "harp", "sharp", "armstrong"]
+
+returns ["arp", "live", "strong"]
+
+Example 2:
+a1 = ["tarp", "mice", "bull"]
+
+a2 = ["lively", "alive", "harp", "sharp", "armstrong"]
+
+returns []
+
+Notes:
+Arrays are written in "general" notation. See "Your Test Cases" for examples in your language.
+In Shell bash a1 and a2 are strings. The return is a string where words are separated by commas.
+Beware: r must be without duplicates.
+*/
+
+function inArray(array1,array2){
+    array2 = array2.join(' ') // create one long string so we can search using .includes
+    let result = array1.filter(elem => array2.includes(elem)).sort() // Filter any strings that are substrings of array2 and sort the result
+    return result 
+  }
+
