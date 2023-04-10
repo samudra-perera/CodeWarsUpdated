@@ -31,7 +31,7 @@ Examples
 function toUnderscore(string) {
     let arr = [];
     if(typeof(string) == 'number') return string.toString()
-    
+
     for(let i = 0; i < string.length; i++) {
         let char = string.charAt(i);
         if(i == 0) {
@@ -46,7 +46,3 @@ function toUnderscore(string) {
     }
     return arr.join('')
   }
-
-  toUnderscore('TestController')
-
-  Number.isInteger(Number(char))

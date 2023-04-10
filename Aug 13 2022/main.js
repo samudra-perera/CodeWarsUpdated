@@ -57,5 +57,6 @@ multiplicationTable = function(size) {
     return table
   }
 
-  multiplicationTable(3)
+  //Works for the case of 0 returns empty array and for the case of 1 returns 1x1 array
+  multiplicationTable(1)
   

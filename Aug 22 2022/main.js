@@ -147,3 +147,6 @@ Unfortunately, they have now left and the code they gave you doesn't work. Fix t
 Don't worry about numbers, special characters, or non-string types being passed to the function. The string lengths will be from 1 character up to 10 characters, but will never be empty.
 */
 
+function capitalizeWord(word) {
+    return word[0].toUpperCase() + word.slice(1);
+  }

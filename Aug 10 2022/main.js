@@ -132,3 +132,4 @@ function validParentheses(parens) {
     }
     return total == 0
 }
+

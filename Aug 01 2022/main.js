@@ -36,22 +36,3 @@ Example
 "identifier"   =>  "identifier"
 ""             =>  ""
 */
-
-function solution(string) {
-    // Find if character is uppercase 
-    //If uppercase add a space to the previous index
-    //return string
-    let split = string.split('')
-    let sol = []
-    for(let i = 0; i < string.length; i++) {
-        let char = string.charAt(i)
-        if(char == char.toUpperCase()) {
-            sol[i] = ' ' + char
-        } else {
-            sol[i] = char
-        }
-    }
-    return sol.join('')
-}
-
-solution('camelCase')

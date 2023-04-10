@@ -179,4 +179,4 @@ function toWeirdCase(string){
     return string.join('')
   }
 
-  toWeirdCase('Weird string case')
+  
